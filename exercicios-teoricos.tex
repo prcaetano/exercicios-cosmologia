@@ -1,0 +1,350 @@
+\documentclass[a4paper, 12pt, notitlepage]{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin=2cm,vmargin=3cm,bmargin=3cm]{geometry}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsmath,amssymb,amsthm}  %pacotes para matemática, opções de indentação, e links
+\usepackage{caption}  % caption to minipages
+\usepackage{indentfirst}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+\usepackage[sc,osf]{mathpazo}   % With old-style figures and real smallcaps.
+\linespread{1.030}              % Palatino leads a little more leading
+
+\usepackage[charter]{mathdesign}
+%\usepackage[urw-garamond]{mathdesign}
+% Euler for math and numbers
+\usepackage[euler-digits,small]{eulervm}
+\AtBeginDocument{\renewcommand{\hbar}{\hslash}}
+
+% Latex plots and drawings
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, angles, quotes}
+\tikzset{>={Latex[width=3mm,length=3mm]}}  %setas mais visíveis no tikz
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+
+% some useful math shortcuts
+\newtheorem{lema}{Lema }
+\newtheorem{teorema}{Teorema }
+\newtheorem{corolario}[teorema]{Corolário }
+\newtheorem{definicao}{Definição }[section]
+\newtheorem{postulado}{Postulado }[section]
+\newtheorem{proposicao}{Proposição }[section]
+\newtheorem{problema}{Problema }
+\newcommand{\cart}{\times}
+\newcommand{\ses}{\Longleftrightarrow}
+\newcommand{\entao}{\Longrightarrow}
+\newcommand{\e}{\wedge}
+\newcommand{\ou}{\vee}
+\newcommand{\vazio}{\varnothing}
+\newcommand{\sobre}{\longrightarrow}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\cmod}[3]{#1 \equiv #2\textrm{ (mod }#3\textrm{)}}
+\newcommand{\tq}{\textrm{ tal que }}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\dsum}{\displaystyle \sum}
+\newcommand{\divg}[1]{\vec{\nabla} \cdot #1}
+\newcommand{\rot}[1]{\vec{\nabla} \times #1}
+\newcommand{\vecb}[1]{\mathbf{ #1}}
+\newcommand{\veb}[1]{\mathbf{\hat{#1}}}
+
+
+\begin{document}
+\title{Exercícios do curso de Cosmologia}
+\author{Pedro Rangel Caetano\footnote{Email: p.r.caetano@gmail.com, RA 147650}} 
+\date{Universidade Estadual de Campinas, 1o. semestre de 2018}
+\maketitle
+
+\begin{enumerate}
+
+\item \textit{Utilizando as equações de Friedmann, obtenha a equação da aceleração para o caso com curvatura.}
+\vspace{1cm}
+
+Partiremos da 1a. equação de Friedmann
+
+\begin{equation}
+\label{eq:ex1.friedmann}
+  \left(\frac{\dot{a}}{a}\right)^2 = \frac{8\pi G}{3c^2} \epsilon - \frac{\kappa c^2}{R_0^2 a^2},
+\end{equation}
+
+\noindent da equação dos fluidos
+
+\begin{equation}
+\label{eq:ex1.fluid}
+  \dot{\epsilon} + 3 \frac{\dot{a}}{a}\left(\epsilon + P\right) = 0,
+\end{equation}
+
+\noindent e das equações de estado para as componentes $\epsilon_i$, com pressão $P_i$, (lembrando que $P = \sum_i P_i$ e $\epsilon = \sum_i \epsilon_i$),
+
+\begin{equation}
+\label{eq:ex1.eos}
+  P_i = w_i \epsilon_i.
+\end{equation}
+
+Derivando \eqref{eq:ex1.friedmann} e substituindo a mesma na expressão resultante, obtemos
+
+\begin{align*}
+  2\frac{\dot{a}}{a}\left(\frac{\ddot{a}}{a} - \left(\frac{\dot{a}}{a}\right)^2\right) &= \frac{8\pi G}{3c^2} \dot{\epsilon} - \frac{\kappa c^2}{R_0^2}\left(-\frac{2\dot{a}}{a^3}\right) \\
+  \frac{\dot{a}\ddot{a}}{a^2} - \frac{8\pi G}{3c^2}\epsilon\frac{\dot{a}}{a} + \frac{\kappa c^2}{R_0^2}\frac{\dot{a}}{a^3} &= \frac{4\pi G}{3c^2} \dot{\epsilon} + \frac{\kappa c^2}{R_0^2} \frac{\dot{a}}{a^3} \\
+  \frac{\ddot{a}}{a} \frac{\dot{a}}{a} &= \frac{4\pi G}{3c^2}\left(2\epsilon \frac{\dot{a}}{a} + \dot{\epsilon}\right)
+\end{align*}
+
+Substituindo agora \eqref{eq:ex1.fluid} e \eqref{eq:ex1.eos} temos
+
+\begin{align*}
+  \frac{\ddot{a}}{a}\frac{\dot{a}}{a} &= \frac{4\pi G}{3c^2}\left(\sum_i 2\epsilon_i - 3(\epsilon_i + P_i)\right) \frac{\dot{a}}{a} \\
+  \frac{\ddot{a}}{a} &= -\frac{4\pi G}{3c^2} \sum_i \left(3\epsilon_i + 3w_i \epsilon_i - 2\epsilon_i\right) \\
+  \frac{\ddot{a}}{a} &= -\frac{4\pi G}{3c^2} \sum_i \epsilon_i(1 + 3w_i)
+\end{align*}
+
+Sendo a última a expressão desejada para a equação da aceleração.
+
+\pagebreak
+
+\item \textit{Mostre que, num universo espacialmente plano preenchido com matéria sem pressão e uma constante cosmológica, a solução das equações de Friedmann é dada por}
+
+\begin{equation}
+	a(t) = C[\sinh(\beta t)]^{2/3}.
+\end{equation}
+
+\textit{Determine a constante $\beta$ e obtenha os limites $\beta t \ll 1$ e $t \to \infty$.}
+\vspace{1cm}
+
+Partindo da primeira equação de Friedmann temos
+
+\begin{align*}
+  \left(\frac{\dot{a}}{a}\right)^2 &= H_0^2 \left(\frac{\Omega_m}{a^3} + \Omega_\Lambda\right) \\
+  \dot{a}^2 a - H_0^2 \Omega_\Lambda a^3 &= H_0^2 \Omega_m
+\end{align*}
+
+\noindent onde $\Omega_m$ e $\Omega_\Lambda$ são os parâmetros de densidade da matéria não relativística e da constante cosmológica hoje. Fazendo a substituição
+
+$$ y = a^{3/2}, \qquad \dot{y} = \frac{3}{2}a^{1/2} \dot{a} $$
+
+\noindent na equação anterior obtemos
+
+\begin{align*}
+  \left(\frac{2\dot{y}}{3}\right)^2 - H_0^2 \Omega_\Lambda y^2 &= H_0^2 \Omega_m \\
+  \dot{y}^2 - \left(\frac{3 H_0 \sqrt{\Omega_\Lambda}}{2}\right)^2 y^2 &= \left(\frac{3 H_0 \sqrt{\Omega_m}}{2}\right)^2.
+\end{align*}
+
+\noindent Note agora que esta equação é a equação de uma hipérbole no espaço de fase $\dot{y}$ vs. $y$. Com esta motivação, e notando que $y(0) = 0$ (pois $a(0) = 0$), podemos tentar o \textit{ansatz}
+
+$$ y = A \sinh(\beta t), \qquad \dot{y} = A \beta \cosh(\beta t). $$
+
+\noindent e obtemos
+
+\begin{align*}
+  A^2 \beta^2 \cosh^2(\beta t) - A^2 \left(\frac{3 H_0 \sqrt{\Omega_\Lambda}}{2}\right)^2 \sinh^2(\beta t) = \left(\frac{3 H_0 \sqrt{\Omega_m}}{2}\right)^2.
+\end{align*}
+
+Que é facilmente satisfeita fazendo
+
+$$ \beta = \left(\frac{3H_0\sqrt{\Omega_\Lambda}}{2}\right), \qquad A = \frac{3H_0 \sqrt{\Omega_m}}{2\beta} = \sqrt{\frac{\Omega_m}{\Omega_\Lambda}} $$.
+
+A solução encontrada para $a(t)$ é, portanto,
+
+\begin{equation*}
+  a(t) = C \left[ \sinh(\beta t)\right]^{2/3}
+\end{equation*}
+
+\noindent onde
+
+$$ C = A^{2/3} = \left(\frac{\Omega_m}{\Omega_\Lambda}\right)^{1/3} $$ 
+
+Para $\beta t \ll 1$, podemos aproximar em primeira ordem $\sinh(\beta t) = \beta t$. O fator de escala então neste caso é
+
+\begin{align*}
+  a(t) &= C\beta^{2/3} t^{2/3} \\
+  a(t) &= \left(\frac{3H_0 \sqrt{\Omega_m} t}{2}\right)^{2/3}
+\end{align*}
+
+\noindent que corresponde a um universo com apenas matéria e constante de Hubble $\widetilde{H_0} = H_0\sqrt{\Omega_m}$ como esperado, já que para $t$ pequeno a expansão é dominada pela matéria. Por outro lado, para $\beta t \to \infty$ temos
+
+$$ \sinh(\beta t) = \frac{e^{\beta t} - e^{-\beta t}}{2} \sim \frac{e^{\beta t}}{2} $$
+
+\noindent logo
+
+\begin{align*}
+  a(t) &= \frac{C}{2^{2/3}} e^{2\beta t/3} \\
+  a(t) &= \left(\frac{\Omega_m}{2\Omega_\Lambda}\right)^{1/3} e^{H_0\sqrt{\Omega_\Lambda}t},
+\end{align*}
+
+\noindent que corresponde à solução assintótica de um universo com apenas constante cosmológica, novamente de acordo com o esperado, pois a constante cosmológica sempre domina para tempos tardios.
+
+\pagebreak
+
+\item \textit{Utilizando a solução acima, obtenha a idade do universo e o raio do horizonte co-móvel. Adote $\Omega_m0 = 0.3$, $k = 0$ e $h = 0.7$.}
+\vspace{1cm}
+
+Suporemos que o Universo é plano. Neste caso, a primeira equação de Friedmann é
+
+\begin{equation*}
+  H^2 = H_0^2 \left(\Omega_{\Lambda} + \frac{1 - \Omega_{\Lambda} - \Omega_r}{a^3} + \frac{\Omega_r}{a^4}\right)
+\end{equation*}
+
+\noindent onde $H_0$ é a constante de Hubble, $\Omega_\Lambda$ o parâmetro de densidade da energia escura hoje e $\Omega_r$ o parâmetro de densidade da radiação hoje. Supondo $\Omega_r = 0$ temos
+
+\begin{equation*}
+  H^2 = H_0^2 \left(\Omega_{\Lambda} + \frac{1 - \Omega_{\Lambda}}{a^3}\right)
+\end{equation*}
+
+Primeiramente, supondo que não há energia escura podemos fazer $\Omega_\Lambda = 0$, e obtemos
+
+\begin{align*}
+  H &= H_0 a^{-3/2} \\
+  \frac{da}{a} &= H_0 a^{-3/2} dt \\
+  \frac{a^{1/2} da}{H_0} &= dt \\
+  \frac{2}{3} d\left( a^{3/2} \right) H_0^{-1} &= dt \\
+  t_0 &= \frac{2}{3} H_0^{-1}
+\end{align*}
+
+Para $H_0 = 73$ km/s/Mpc, $H_0^{-1} = 13.4$ Gyr, logo obtemos para a idade do Universo num Universo plano, dominado por matéria, $t_0 = 8.9$ Gyr.
+
+Agora, supondo que $\Omega_\Lambda = 0.7$, temos
+
+\begin{align*}
+ H &= H_0 \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{1/2} \\
+ dt &= H_0^{-1} \frac{da}{a} \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2} \\
+ t_0 &= H_0^{-1} \int_0^1 \frac{da}{a} \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2}
+\end{align*}
+
+Fazendo a mudança de variáveis $u = \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{1/2}$ obtemos
+
+\begin{align*}
+  du &= \frac{1}{2}\left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2}(-3)\frac{1 - \Omega_\Lambda}{a^4} da  \nonumber \\ 
+  &\Rightarrow \frac{da}{a}\left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2} = -\frac{2}{3} \frac{a^3}{1 - \Omega_\Lambda}du = -\frac{2}{3} \frac{du}{u^2 - \Omega_\Lambda} \nonumber
+\end{align*}
+
+Portanto,
+
+\begin{equation*}
+  \int_0^1 \frac{da}{a} \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2} = \frac{2}{3} \int_1^{\infty} \frac{du}{u^2 - \Omega_\Lambda}
+\end{equation*}
+
+Agora, como
+
+\begin{align*}
+  \int_1^c \frac{du}{u^2 - \Omega_\Lambda} &= \frac{1}{2\Omega_\Lambda^{1/2}} \left( \int_1^c \frac{1}{u - \Omega_\Lambda^{1/2}} du - \int_1^c \frac{1}{u + \Omega_\Lambda^{1/2}} du\right) \\
+  &= \frac{1}{2\Omega_\Lambda^{1/2}}\left( \log \frac{c - \Omega_\Lambda^{1/2}}{c + \Omega_\Lambda^{1/2}} + \log\frac{1 + \Omega_\Lambda^{1/2}}{1 - \Omega_\Lambda^{1/2}}\right)
+\end{align*}
+
+\noindent no limite $c \to \infty$ obtemos
+
+\begin{equation*}
+  \int_0^1 \frac{da}{a} \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2} = \frac{1}{3\Omega_\Lambda^{1/2}} \log \frac{1 + \Omega_\Lambda^{1/2}}{1 - \Omega_\Lambda^{1/2}}
+\end{equation*}
+
+Para $\Omega_\Lambda = 0.7$ esta integral avalia-se em $0.964$, logo obtemos $t_0 = 12.9$ Gyr. A integral contendo a contribuição da radiação,
+
+$$ \int_0^1 \frac{da}{a} \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda - \Omega_r}{a^3} + \frac{\Omega_r}{a^4}\right) $$
+
+\noindent pode ser feita numericamente, e difere apenas $0.02$ \% da aqui calculada.
+
+Já para o horizonte comóvel, num universo plano contendo apenas matéria não-relativística e energia escura, temos
+
+\begin{align*}
+  \chi_{hor} &= c \int_0^{t_0} \frac{dt}{a} \\
+  &= c \int_0^1 \frac{da}{H(a) a^2} \\
+  &= \frac{c}{H_0} \int_0^1 \frac{da}{a^2}\left(\Omega_\Lambda  +\frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2}
+\end{align*}
+
+Fazendo a mudança de variáveis $u = \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{1/2}$ obtemos
+
+\begin{align*}
+  du &= \frac{1}{2}\left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2}(-3)\frac{1 - \Omega_\Lambda}{a^4} da \\
+  &\Rightarrow \frac{da}{a^2} \left(\Omega_\Lambda + \frac{1 - \Omega_\Lambda}{a^3}\right)^{-1/2} = -\frac{2}{3} \frac{du}{1 - \Omega_\Lambda} a^2 = -\frac{2}{3} \frac{du}{1 - \Omega_\Lambda} \left(\frac{1 - \Omega_\Lambda}{u^2 - \Omega_\Lambda}\right)^{2/3}
+\end{align*}
+
+E portanto obtemos
+
+\begin{align*}
+  \chi_{hor} &= \frac{c}{H_0} \frac{2}{3} (1-\Omega_\Lambda)^{-1/3} \int_1^{\infty} (u^2 - \Omega_\Lambda)^{-2/3} du \\
+  &= \frac{c}{H_0} \frac{2}{3} (1-\Omega_\Lambda)^{-1/3} \int_{(1 - \Omega_\Lambda)^{1/2}}^{\infty} u^{-4/3} du \\
+  &= \frac{c}{H_0} \frac{2}{3} (1-\Omega_\Lambda)^{-1/3} (-3u^{-1/3})\Big|_{(1 - \Omega_\Lambda)^{1/2}}^{\infty} \\
+  &= \frac{c}{H_0} \frac{2}{\sqrt{1-\Omega_\Lambda}}  
+\end{align*}
+
+Para $H_0 = 70$ km/s/Mpc, $c/H_0 = 4.3$ Gpc, portanto para $\Omega_\Lambda = 0.7$ o horizonte comóvel vale $\chi_{hor} = 15.7$ Gpc.
+
+\pagebreak
+
+\item[6. ]\textit{Utilizando a equação de estado do gás de Chaplygin generalizado,}
+
+\begin{equation}
+  p = -\frac{A}{\rho^{\alpha}}
+\end{equation}
+
+\noindent \textit{nas equações de Friedmann com $k = 0$, obtenha a função de Hubble}
+
+\begin{equation}
+  3H(z)^2 = \left[A + B(1 + z)^{3(1+\alpha)}\right]^{\frac{1}{1  +\alpha}},
+\end{equation}
+
+\textit{onde $B$ é uma constante de integração com}
+
+\begin{equation}
+  A + B = (3H_0^2)^{1+\alpha}.
+\end{equation}
+\vspace{1cm}
+
+Em unidades naturais com $c = 8\pi G = 1$ temos
+
+\begin{align*}
+  3H^2 &= \rho + \Lambda \\
+  \dot{\rho} + 3H\left(\rho + p\right) &= 0
+\end{align*}
+
+Substituindo na segunda a equação de estado do gás de Chaplygin e fazendo a mudança de variáveis de $t$ para $z$,
+
+$$ \frac{d}{dt} = \frac{dz}{dt} \frac{d}{dz} = \frac{d}{dt}\left(\frac{1}{a} - 1\right) = -H(1+z)\frac{d}{dz} $$
+
+\noindent temos
+
+\begin{align*}
+ -H(1+z)\frac{d\rho}{dz} + 3H\left(\rho - A\rho^{-\alpha}\right) &= 0\\
+ \frac{d\rho}{\rho - A\rho^{-\alpha}} &= 3\frac{dz}{1 + z} \\
+ \int \frac{\rho^{\alpha}}{\rho - A\rho^{-\alpha}} d\rho &= 3 \int \frac{dz}{1+z} + \text{constante.} \\
+\end{align*}
+
+Fazendo a mudança de variáveis $u = \rho^{\alpha+1} - A$ e integrando vem
+
+\begin{align*}
+  \frac{1}{1+\alpha} \int \frac{du}{u} &= 3 \log(1+z) + \text{ constante.} \\
+  \log(\rho^{1 + \alpha} - A) &= 3(1+\alpha)\log(1+z) + \text{constante.} \\
+  \rho^{1+\alpha} - A &= B(1+z)^{1+\alpha} \\
+  \rho &= \left(A + B(1+z)^{1+\alpha}\right)^{1/(1+\alpha)}.
+\end{align*}
+
+Voltando esta equação na primeira equação de Friedmann obtemos imediatamente o resultado
+
+\begin{equation}
+  3H(z)^2 = \left[A + B(1+z)^{3(1+\alpha)}\right].
+\end{equation}
+
+A constante de integração é fixada fazendo $z = 0$, quando $H(z) = H_0$, o que fornece
+
+\begin{equation}
+  A + B = (3H_0^2)^{1+\alpha}.
+\end{equation}
+
+
+
+
+
+
+%FIM DOS EXERCÍCIOS
+\end{enumerate}
+\end{document}
