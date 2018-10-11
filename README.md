@@ -45,3 +45,20 @@ source activate curso-cosmologia
 pip install -r requirements.txt
 ```
 
+### Instalação do CLASS
+
+Não é possível instalar CLASS 2.6.3 usando apenas o pip. Uma possibilidade é clonar o [repositório git do CLASS](https://github.com/lesgourg/class_public), compilá-lo e, uma vez no ambiente virtual criado, instalar o wrapper python.
+
+```
+git clone https://github.com/lesgourg/class_public.git
+git checkout tags/v2.6.3
+cd class_public
+make clean
+make
+workon curso-cosmologia
+python setup.py install
+python -c 'from classy import Class'
+```
+
+Se a última etapa procedeu sem erros está tudo certo.
+
